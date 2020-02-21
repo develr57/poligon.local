@@ -15,10 +15,12 @@ class CreateBlogCategoriesTable extends Migration
     {
         Schema::create('blog_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('parent_id')->default(0);
+            $table->unsignedBigInteger('parent_id')->default(1);
+            
             $table->string('slug')->unique();
             $table->string('title');
             $table->text('description')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });
